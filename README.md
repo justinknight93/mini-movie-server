@@ -11,3 +11,5 @@ npm start
 ```
 
 Port number, folder name, and authentication settings can be changed by editing the .env file.
+
+server.exe was built with pkg
