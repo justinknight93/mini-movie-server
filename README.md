@@ -1,4 +1,4 @@
-# mini-movie-server
+# Mini Movie Server
 
 A simple node program that creates a http server for Kodi.
 Not a very impressive program but it works. :)
