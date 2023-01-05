@@ -10,4 +10,4 @@ npm install
 npm start
 ```
 
-Port number and folder name can be changed by editing the .env file.
+Port number, folder name, and authentication settings can be changed by editing the .env file.

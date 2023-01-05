@@ -1,6 +1,7 @@
 import * as dotenv from "dotenv";
 import * as path from "path";
 import * as fs from "fs";
+import basicAuth from "express-basic-auth";
 import express from "express";
 import ip from "ip";
 
@@ -14,12 +15,34 @@ function scanDirectory(directory) {
   });
 }
 
+function constructJson(jsonKey, jsonValue) {
+  var jsonObj = {};
+  jsonObj[jsonKey] = jsonValue;
+  return jsonObj;
+}
+
 dotenv.config();
 
 const { env } = process;
 const folder = env.FOLDER_PATH || "./movies";
 const port = env.PORT || 3000;
+const userName = env.USERNAME;
+const password = env.PASSWORD;
+const auth = env.AUTH;
 const app = express();
+
+if (auth?.toLowerCase() == "true") {
+  if (!userName) {
+    throw "USERNAME is not set in .env";
+  }
+  if (!password) {
+    throw "PASSWORD is not set in .env";
+  }
+  const users = constructJson(userName, password);
+  const authOptions = { users, challenge: true };
+  console.log(authOptions);
+  app.use(basicAuth(authOptions));
+}
 
 app.use(`/${folder}`, express.static(folder));
 app.get("/", function (req, res) {
