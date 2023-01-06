@@ -1,9 +1,9 @@
-import * as dotenv from "dotenv";
-import * as path from "path";
-import * as fs from "fs";
-import basicAuth from "express-basic-auth";
-import express from "express";
-import ip from "ip";
+const dotenv = require("dotenv");
+const path = require("path");
+const fs = require("fs");
+const basicAuth = require("express-basic-auth");
+const express = require("express");
+const ip = require("ip");
 
 let files = [];
 
